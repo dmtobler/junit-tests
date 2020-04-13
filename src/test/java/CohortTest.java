@@ -1,9 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-import java.security.PublicKey;
-import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.*;
 
@@ -76,6 +73,8 @@ public class CohortTest {
     @Test
     public void testGetStudents() {
 
+        List<Student> students = testCohort.getStudents();
+
         assertEquals(0, testCohort.getStudents().size());
 
         testCohort.addStudent(danielle);
@@ -90,6 +89,13 @@ public class CohortTest {
         testCohort.addStudent(quintin);
         assertEquals(4, testCohort.getStudents().size());
         // Test passes - returns the same size as expected each time a student is added
+
+
+        assertEquals("Danielle", students.get(0).getName());
+        assertEquals("Justin", students.get(1).getName());
+        assertEquals("Swinny", students.get(2).getName());
+        assertEquals("Quintin", students.get(3).getName());
+        // Test passes - all students in the list have the expected names
     }
 
     @Test
