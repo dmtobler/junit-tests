@@ -45,12 +45,19 @@ public class CohortTest {
 //    }
 
     public Cohort testCohort;
-    public Student danielle;
+    public Student danielle, justin, swinny, quintin;
 
     @Before
     public void setUp() {
         testCohort = new Cohort();
         danielle = new Student(1, "Danielle");
+        danielle.addGrade(90);
+        justin = new Student(2, "Justin");
+        justin.addGrade(90);
+        swinny = new Student(3, "Swinny");
+        swinny.addGrade(100);
+        quintin = new Student(4, "Quintin");
+        quintin.addGrade(100);
     }
 
     @Test
@@ -71,24 +78,28 @@ public class CohortTest {
 
         assertEquals(0, testCohort.getStudents().size());
 
-        testCohort.addStudent(new Student(1, "Danielle"));
+        testCohort.addStudent(danielle);
         assertEquals(1, testCohort.getStudents().size());
 
-        testCohort.addStudent(new Student(2, "Justin"));
+        testCohort.addStudent(justin);
         assertEquals(2, testCohort.getStudents().size());
 
-        testCohort.addStudent(new Student(3, "Swinny"));
+        testCohort.addStudent(swinny);
         assertEquals(3, testCohort.getStudents().size());
 
-        testCohort.addStudent(new Student(4, "Quintin"));
+        testCohort.addStudent(quintin);
         assertEquals(4, testCohort.getStudents().size());
+        // Test passes - returns the same size as expected each time a student is added
     }
 
     @Test
     public void testGetCohortAverage() {
+        testCohort.addStudent(danielle);
+        testCohort.addStudent(justin);
+        testCohort.addStudent(swinny);
+        testCohort.addStudent(quintin);
 
-        for(Student student : ) {
-            this.Cohort.addGrade();
-        }
+        assertEquals(95.0, testCohort.getCohortAverage(), 0);
+        // Test passes - expected cohort grade of 95.0 ((90 + 90 + 100 + 100) / 4)
     }
 }
